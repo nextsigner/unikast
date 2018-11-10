@@ -8,9 +8,14 @@ Item {
     property string ip: '127.0.0.1'
     property int port: 12345
     property string serverName: 'chatserver'
+    property var container: xQmlObjects
     Component.onCompleted:{
         unik.initWebSocketServer(r.ip, r.port, r.serverName);
-        listModelUser.updateUserList()
+        //listModelUser.updateUserList()
+    }
+    Item {
+        id: xQmlObjects
+        anchors.fill: r
     }
     Connections {
         target: cw
@@ -21,14 +26,15 @@ Item {
     Connections {
         target: cs
         onUserListChanged:{
-            listModelUser.updateUserList()
+            //listModelUser.updateUserList()
         }
         onNewMessage:{
             console.log('A new message: '+user+' say: '+msg)
-            listModelMsg.addMsg('['+time+']'+user+':'+msg)
+            var obj = Qt.createQmlObject(msg, r.container, 'unikastcode')
+            //listModelMsg.addMsg('['+time+']'+user+':'+msg)
         }
     }
-    Column{
+    /*Column{
         anchors.fill: parent
         Row{
             width: parent.width
@@ -136,4 +142,5 @@ Item {
             }
         }
     }    
+*/
 }
