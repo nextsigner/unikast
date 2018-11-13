@@ -31,6 +31,9 @@ Item {
         onNewMessage:{
             console.log('A new message: '+user+' say: '+msg)
             var obj = Qt.createQmlObject(msg, r.container, 'unikastcode')
+            if(app){
+                app.show()
+            }
             //listModelMsg.addMsg('['+time+']'+user+':'+msg)
         }
     }
