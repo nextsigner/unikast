@@ -18,11 +18,23 @@ Item {
         anchors.fill: r
     }
     Connections {
-        target: cw
+        id:connCW
+        //target: cw
         onClientConnected:{
             console.log("A new client connected.")
         }
     }
+    Timer{
+            running:true
+            repeat:true
+            interval: 1000
+            onTriggered: {
+                if(cw){
+                    connCW.target=cw
+                }
+
+            }
+        }
     Connections {
         target: cs
         onUserListChanged:{
