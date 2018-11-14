@@ -7,14 +7,25 @@ ApplicationWindow{
 	visible:true
     title: 'Unikast from Unik Qml Engine by @nextsigner'
     width: Screen.width/2
-    height: Screen.desktopAvailableHeight
+    height: Screen.desktopAvailableHeight-altoBarra
     color: 'black'
+    property int altoBarra: 0
     property int fs: appSettings.fs
 
     property color c1: "#62DA06"
     property color c2: "#8DF73B"
     property color c3: "black"
     property color c4: "white"
+
+    property int uHeight: 0
+    /*onHeightChanged: {
+        if(height>uHeight){
+            uHeight=height
+            app.height=height=Qt.platform.os!=='windows'?Screen.desktopAvailableHeight:Screen.desktopAvailableHeight-(Screen.desktopAvailableHeight-unik.frameHeight(app))
+
+        }
+
+    }*/
     Settings{
         id: appSettings
         category: 'conf-unikasclient'
@@ -50,5 +61,11 @@ ApplicationWindow{
             appSettings.fs=20
         }
         appSettings.logViewVisible=true
+
+        if(Qt.platform.os==='windows'){
+            var anchoBorde=(app.width-unik.frameWidth(app))/2
+            var altoBarraTitulo=unik.frameHeight(app)-height
+            app.altoBarra=height-(Screen.desktopAvailableHeight-altoBarraTitulo)
+        }
     }
 }
