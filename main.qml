@@ -20,14 +20,6 @@ ApplicationWindow{
     property color c4: "white"
 
     property int uHeight: 0
-    /*onHeightChanged: {
-        if(height>uHeight){
-            uHeight=height
-            app.height=height=Qt.platform.os!=='windows'?Screen.desktopAvailableHeight:Screen.desktopAvailableHeight-(Screen.desktopAvailableHeight-unik.frameHeight(app))
-
-        }
-
-    }*/
     Settings{
         id: appSettings
         category: 'conf-unikasclient'
@@ -56,6 +48,9 @@ ApplicationWindow{
         visible: appSettings.logViewVisible
     }
     Component.onCompleted: {
+        var ukldata='-folder='+appsDir+'/unikast -cfg -wss'
+        var ukl=appsDir+'/link_unikast.ukl'
+        unik.setFile(ukl, ukldata)
         if(appSettings.lvh<=0){
             appSettings.lvh=100
         }
