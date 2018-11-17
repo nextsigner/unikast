@@ -11,6 +11,7 @@ ApplicationWindow{
     width: Screen.width/2
     height: Screen.desktopAvailableHeight-altoBarra
     color: 'black'
+    property string moduleName: 'unikast'
     property int altoBarra: 0
     property int fs: appSettings.fs
 
@@ -22,7 +23,7 @@ ApplicationWindow{
     property int uHeight: 0
     Settings{
         id: appSettings
-        category: 'conf-unikasclient'
+        category: 'conf-unikast'
         property int cantRun
         property bool fullScreen
         property bool logViewVisible
@@ -36,7 +37,7 @@ ApplicationWindow{
     FontLoader {name: "FontAwesome";source: "qrc:/fontawesome-webfont.ttf";}
 
 
-    UnikWebSocketServerView{}
+    UnikWebSocketServerView{id:uwss}
 
     LogView{
         id:logView
@@ -44,6 +45,7 @@ ApplicationWindow{
         height: appSettings.lvh
         fontSize: app.fs
         topHandlerHeight: Qt.platform.os!=='android'?app.fs*0.25:app.fs*0.75
+        showUnikControls: true
         anchors.bottom: parent.bottom
         visible: appSettings.logViewVisible
     }

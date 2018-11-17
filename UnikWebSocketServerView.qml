@@ -158,4 +158,9 @@ Item {
         }
     }    
 */
+    function clear(){
+            for(var i=0;i<xQmlObjects.children.length;i++){
+                xQmlObjects.children[i].destroy(1)
+            }
+    }
 }
