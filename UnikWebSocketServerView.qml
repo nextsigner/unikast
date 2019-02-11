@@ -10,6 +10,15 @@ Item {
     property string serverName: 'chatserver'
     property var container: xQmlObjects
     Component.onCompleted:{
+        var appArgs = Qt.application.arguments
+        for(var i=0;i<appArgs.length;i++){
+            console.log('------------------->'+appArgs[i])
+            var arg=''+appArgs[i]
+            if(arg.indexOf('-ip=')===0){
+                var m0=arg.split('=')
+                r.ip=m0[1]
+            }
+        }
         unik.initWebSocketServer(r.ip, r.port, r.serverName);
         //listModelUser.updateUserList()
     }

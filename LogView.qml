@@ -147,7 +147,6 @@ Rectangle{
                     uwss.clear()
                 }
             }
-
             Boton{
                 id:btnDown
                 w:parent.height

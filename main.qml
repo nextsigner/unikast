@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Window 2.0
 import Qt.labs.settings 1.0
+import QtPositioning 5.9
+import QtLocation 5.9
 ApplicationWindow{
 	id:app
     visible:true
