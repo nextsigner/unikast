@@ -19,7 +19,8 @@ Item {
                 r.ip=m0[1]
             }
         }
-        unik.initWebSocketServer(r.ip, r.port, r.serverName);
+        unik.startWSS(r.ip, r.port, r.serverName);
+        //unik.initWebSocketServer(r.ip, r.port, r.serverName);
         //listModelUser.updateUserList()
     }
     Item {
